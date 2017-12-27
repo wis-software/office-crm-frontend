@@ -2,6 +2,7 @@
 /.idea
 /*.iml
 /.vscode
+/.awcache
 
 # dependencies
 node_modules
@@ -9,6 +10,7 @@ node_modules
 # misc
 /.sass-cache
 /connect.lock
+/dll
 npm-debug.*
 yarn-error.*
 

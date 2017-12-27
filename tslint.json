@@ -1,0 +1,104 @@
+{
+  "rulesDirectory": [
+//    "node_modules/codelyzer"
+  ],
+  "rules": {
+    "array-type": [
+      true,
+      "array"
+    ],
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
+    "max-line-length": [
+      true,
+      150
+    ],
+    "no-inferrable-types": true,
+    "class-name": true,
+    "import-spacing": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "eofline": true,
+    "no-duplicate-variable": true,
+    "no-eval": true,
+    "no-arg": true,
+    "no-internal-module": true,
+    "no-trailing-whitespace": true,
+    "no-bitwise": false,
+    "no-shadowed-variable": true,
+    "no-unused-expression": true,
+    "one-line": [
+      true,
+      "check-catch",
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "curly": true,
+    "variable-name": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "directive-selector": [
+      true,
+      "attribute",
+      [
+        "sn"
+      ],
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      [
+        "sn"
+      ],
+      "kebab-case"
+    ],
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-attribute-parameter-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "no-forward-ref": false,
+    "use-pipe-transform-interface": true,
+    "pipe-naming": [
+      true,
+      "camelCase",
+      [
+        "sn"
+      ]
+    ],
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "no-duplicate-imports": true
+  }
+}
