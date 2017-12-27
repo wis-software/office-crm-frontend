@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+
+
 @Component({
-  selector: 'app',
+  selector: 'ws-app',
   templateUrl: './app.component.html'
 })
 
