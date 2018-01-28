@@ -9,6 +9,7 @@
     "serve": "webpack-dev-server --config=config/webpack.dev.js --progress --profile --watch",
     "build:prod": "npm run clean:dist && ENV=production AOT=1 webpack --config=config/webpack.prod.js --progress --profile --bail",
     "clean:dist": "npm run rimraf -- dist",
+    "lint": "tslint 'src/**/*.ts' -p ./tslint.json",
     "rimraf": "rimraf"
   },
   "devDependencies": {
