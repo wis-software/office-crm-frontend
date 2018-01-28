@@ -3,7 +3,7 @@ const webpackMerge = require('webpack-merge');
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
 
-const helpers = require('./helpers');
+const { dir } = require('./helpers');
 
 const ENV = 'development';
 
@@ -51,7 +51,7 @@ module.exports = function() {
             // 'moment'
           ]
         },
-        dllDir: helpers.root('dll'),
+        dllDir: dir('dll'),
         webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
           devtool: 'cheap-module-source-map',
           plugins: []

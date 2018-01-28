@@ -1,16 +1,18 @@
 const path = require('path');
 const fs = require('fs');
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(__dirname, '../');
 const EVENT = process.env.npm_lifecycle_event || '';
-
-let root = path.join.bind(path, ROOT);
-exports.root = root;
 
 const METADATA = {
   AOT: process.env.AOT || false,
   isProd: process.env.ENV === 'production' || false,
   tsConfigPath: process.env.TS_CONFIG || 'tsconfig.json'
 };
+
+function dir(args) {
+  args = Array.prototype.slice.call(arguments, 0);
+  return path.join.apply(path, [ROOT].concat(args));
+}
 
 /**
  * Getting env file
@@ -26,10 +28,10 @@ function getEnvFile(suffix) {
     return;
   }
 
-  let fileName = root(`src/environments/environment${suffix}.ts`);
+  let fileName = dir(`src/environments/environment${suffix}.ts`);
   if (fs.existsSync(fileName)) {
     return fileName;
-  } else if (fs.existsSync(fileName = root('src/environments/environment.ts'))) {
+  } else if (fs.existsSync(fileName = dir('src/environments/environment.ts'))) {
     console.warn(`Could not find environment file with suffix ${suffix}, loading default environment file`);
     return fileName;
   } else {
@@ -96,11 +98,9 @@ function ngcWebpackSetup(prod, aot) {
   };
 
   const environment = getEnvFile('prod');
-  console.log(environment);
   if (environment) {
-    console.log(root('src/environments/environment.ts'));
     ngcWebpackPluginOptions.hostReplacementPaths = {
-      [root('src/environments/environment.ts')]: environment
+      [dir('src/environments/environment.ts')]: environment
     }
   }
 
@@ -139,3 +139,4 @@ exports.hasProcessFlag = hasProcessFlag;
 exports.hasNpmFlag = hasNpmFlag;
 exports.getUglifyOptions = getUglifyOptions;
 exports.ngcWebpackSetup = ngcWebpackSetup;
+exports.dir = dir;

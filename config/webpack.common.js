@@ -5,14 +5,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
-const helpers = require('./helpers');
 
-const ngcWebpackSetup = helpers.ngcWebpackSetup;
-const METADATA = helpers.METADATA;
-const path = require('path');
+const {dir, ngcWebpackSetup, METADATA} = require('./helpers');
 
-// Helper functions
-const ROOT = process.cwd();
 
 module.exports = function() {
   const ngcWebpackConfig = ngcWebpackSetup(METADATA.isProd, METADATA.AOT);
@@ -23,7 +18,7 @@ module.exports = function() {
   });
 
   return {
-    context: path.join(ROOT, 'src'), // TODO
+    context: dir('src'),
 
     entry: {
       polyfills: './polyfills.ts',
@@ -31,7 +26,7 @@ module.exports = function() {
     },
 
     output: {
-      path: path.join(ROOT, 'dist'),
+      path: dir('dist'),
       filename: '[name].[hash].js',
       chunkFilename: '[id].[hash].chunk.js',
       hotUpdateChunkFilename: "[id].[hash].hot-update.js",
@@ -47,16 +42,6 @@ module.exports = function() {
     module: {
       rules: [
         ...ngcWebpackConfig.loaders,
-        // {
-        //   enforce: 'pre',
-        //   test: /\.ts$/,
-        //   loader: 'string-replace-loader',
-        //   query: {
-        //     search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-        //     replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-        //     flags: 'g'
-        //   }
-        // },
         {
           test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           loader: 'file-loader',
@@ -164,7 +149,7 @@ module.exports = function() {
       }),
 
       new CleanWebpackPlugin(['dist'], {
-        root: ROOT,
+        root: dir(),
         verbose: true,
         dry: false
       }),

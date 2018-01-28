@@ -3,9 +3,8 @@ const PurifyPlugin = require('@angular-devkit/build-optimizer').PurifyPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const helpers = require('./helpers');
+const { getUglifyOptions } = require('./helpers');
 
-const ENV = 'production';
 
 let commonConfig = require('./webpack.common.js');
 
@@ -20,7 +19,7 @@ module.exports = function() {
 
       new UglifyJsPlugin({
         sourceMap: true,
-        uglifyOptions: helpers.getUglifyOptions(true)
+        uglifyOptions: getUglifyOptions(true)
       }),
 
       new CompressionPlugin({
