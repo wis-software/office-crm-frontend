@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { routing, routingComponents } from './app.routing';
 
 import '../styles/vendor.scss';
+import { AuthModule } from './auth/auth.module';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -18,13 +20,13 @@ import '../styles/vendor.scss';
     BrowserModule,
     SharedModule,
     HttpClientModule,
-
+    AuthModule,
+    MainModule,
     // Routes
     routing,
   ],
   declarations: [
     AppComponent,
-
     // Router components
     routingComponents,
   ],

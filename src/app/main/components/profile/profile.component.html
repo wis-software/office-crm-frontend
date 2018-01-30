@@ -1,0 +1,93 @@
+<div class="profile">
+  <div class="profile-title">Profile</div>
+  <form (ngSubmit)="login()"
+        [formGroup]="profileForm">
+    <div class="form-grout-title">General information</div>
+    <div class="form-group">
+      <input type="text"
+             name="firstName"
+             class="form-control"
+             placeholder="Your name"
+             [formControl]="profileForm.controls['firstName']">
+      <div class="error"
+           [ngClass]="{'has-error': !profileForm.controls['firstName'].valid &&
+           profileForm.controls['firstName'].touched}">
+        First name is required
+        </div>
+    </div>
+    <div class="form-group">
+      <input type="text"
+             name="lastName"
+             class="form-control"
+             placeholder="Your lastname"
+             [formControl]="profileForm.controls['lastName']">
+      <div class="error"
+           [ngClass]="{'has-error': !profileForm.controls['lastName'].valid &&
+           profileForm.controls['lastName'].touched}">
+        Lastname is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="date"
+             name="startDate"
+             class="form-control"
+             placeholder="Start date"
+             [formControl]="profileForm.controls['startDate']">
+      <div class="error"
+           [ngClass]="{'has-error': !profileForm.controls['startDate'].valid &&
+           profileForm.controls['startDate'].touched}">
+        Start date is required
+      </div>
+    </div>
+    <div class="form-group">
+      <select type="select"
+              name="position"
+              class="form-control"
+              [formControl]="profileForm.controls['position']">
+        <option selected disabled>
+          Your position
+        </option>
+        <option value="frontend developer">
+          frontend developer
+        </option>
+        <option value="backend developer">
+          backend developer
+        </option>
+      </select>
+      <div class="error"
+           [ngClass]="{'has-error': !profileForm.controls['position'].valid &&
+           profileForm.controls['position'].touched}">
+        Position is required
+      </div>
+    </div>
+    <div class="contacs">
+      <div class="form-grout-title">Contacts</div>
+      <div class="form-group">
+        <input type="tel"
+               name="phone"
+               class="form-control"
+               placeholder="Your telephone"
+               [formControl]="profileForm.controls['phone']">
+      </div>
+      <div class="form-group">
+        <input type="text"
+               name="address"
+               class="form-control"
+               placeholder="Your address"
+               [formControl]="profileForm.controls['address']">
+      </div>
+      <div class="form-group">
+        <input type="text"
+               name="skype"
+               class="form-control"
+               placeholder="Your skype"
+               [formControl]="profileForm.controls['skype']">
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="!profileForm.valid">Send</button>
+    </div>
+  </form>
+</div>

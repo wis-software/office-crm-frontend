@@ -1,0 +1,43 @@
+.profile{
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input, select{
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 100;
+    }
+    input, select{
+      width: 300px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 100;
+      border:1px solid #b3cccc;
+      outline-color: #b3cccc;
+    }
+  }
+}
+.profile-title{
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+  font-size: 25px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+.form-control{
+  width: 250px;
+}
+.form-grout-title {
+  margin-bottom: 14px;
+  text-align: center;
+}
+.error{
+  display: none;;
+  color: red;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+}
+.has-error{
+  display: block;
+}

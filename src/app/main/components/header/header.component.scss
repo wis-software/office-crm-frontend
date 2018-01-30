@@ -1,0 +1,107 @@
+$grey: #807e7b;
+.header{
+  padding: 8px 16px 8px 101px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  transition: all 0.2s ease-out 0s;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+  background-color: #f5f3f4;
+  border-bottom: 1px solid #ccc8c5;
+  &.open{
+    padding-left: 273px;
+    transition: all 0.2s ease-out 0s;
+  }
+}
+.search{
+  position: relative;
+  flex:1;
+}
+.search-text{
+  color: black;
+  border: 1px solid $grey;
+  border-radius: 3px;
+  height: 32px;
+  padding-left: 32px;
+  width: 100%;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+}
+.top-nav{
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  &>li{
+    display: inline-block;
+  }
+}
+.top-nav-notify{
+  color: $grey;
+  font-size: 19px;
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+}
+.search-inner{
+  position: relative;
+}
+.search-hepler{
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  height: 100%;
+  text-align: center;
+  line-height: 3;
+  cursor: pointer;
+  width: 32px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $grey;
+}
+.app-shortcuts{
+  margin: 0;
+}
+.app-shortcuts-item{
+  padding: 10px 0;
+  text-align: center;
+  &:hover{
+    text-decoration: none;
+    .fa{
+      background-color: rgba(0,0,0,.06);
+    }
+  }
+  .fa{
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    display: inline-block;
+    color: black;
+    border-radius: 50%;
+  }
+  span{
+    display: block;
+    font-size: 13px;
+    color: black;
+  }
+}
+.dropdown-menu--block{
+  width: 320px;
+}
+.show{
+  display: block !important;
+}
+.user-img{
+  width: 32px;
+  height: 32px;
+  border: 1px solid $grey;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dropdown-item{
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+}

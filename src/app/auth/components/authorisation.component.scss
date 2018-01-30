@@ -1,0 +1,80 @@
+$grey: #edebe9;
+.auth-form{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+  background-color: $grey;
+  flex-direction: column;
+  input{
+    width: 300px;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 100;
+    border:1px solid #b3cccc;
+    outline-color: #b3cccc;
+  }
+  .login-title{
+    margin-bottom: 2px;
+    font-size: 25px;
+    font-weight: 100;
+  }
+  .has-error{
+    input{
+      border: 1px solid red;
+    }
+  }
+  form{
+    border: 1px solid #d1e0e0;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: white;
+  }
+}
+.password-input{
+  position: relative;
+}
+.input-group-addon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.green-eye{
+  color: #6fda44;
+}
+.error{
+  visibility: hidden;
+  font-size: 13px;
+  color: red;
+  &.inncorect{
+    margin-bottom: 8px;
+  }
+}
+.has-error{
+  visibility: visible;
+}
+.logo{
+  margin-bottom: 16px;
+}
+.logo-words{
+  width: 232px;
+}
+.logo-logo{
+  width: 92px;
+}
+.form-group{
+  margin-bottom: 8px;
+}
+.alert{
+  padding: 2px;
+  font-size: 13px;
+  margin-bottom: 8px;
+  visibility: hidden;
+}
