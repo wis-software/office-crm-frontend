@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
+import { GraphQLModule } from './apollo.config';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +19,7 @@ import '../styles/vendor.scss';
     BrowserModule,
     SharedModule,
     HttpClientModule,
-
+    GraphQLModule,
     // Routes
     routing,
   ],
@@ -31,5 +32,4 @@ import '../styles/vendor.scss';
 })
 
 export class AppModule {
-
 }
