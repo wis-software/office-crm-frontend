@@ -1,0 +1,8 @@
+<div class="dashboard">
+  <main-menu (openMenu)="header.sendData($event)" #menu></main-menu>
+  <header [open]="open" #header></header>
+  <div class="content" [ngClass]="{'open-menu': menu.open, 'non-padding': router.url === '/login'}">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

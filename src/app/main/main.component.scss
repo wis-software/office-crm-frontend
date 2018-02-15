@@ -1,0 +1,15 @@
+.content, .dashboard{
+  height: 100%;
+}
+.content{
+  padding-left: 48px;
+  padding-top: 48px;
+  transition: all 0.2s ease-out 0s;
+  &.open-menu{
+    padding-left: 220px;
+    transition: all 0.2s ease-out 0s;
+  }
+  &.non-padding{
+    padding: 0;
+  }
+}

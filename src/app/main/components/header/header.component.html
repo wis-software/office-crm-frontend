@@ -1,0 +1,73 @@
+<div class="header" [ngClass]="{'open': open}" *ngIf="router.url !== '/login'">
+  <form class="search">
+    <div class="search-inner">
+      <input type="text" class="search-text" placeholder="Search for people, files, documents...">
+      <i class="fa fa-search search-hepler" aria-hidden="true"></i>
+    </div>
+  </form>
+  <ul class="top-nav">
+    <li>
+      <a href="" data-toggle="dropdown" class="top-nav-notify">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href="" data-toggle="dropdown" class="top-nav-notify">
+        <i class="fa fa-bell-o" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="dropdown">
+      <a href="" data-toggle="dropdown" class="top-nav-notify">
+        <i class="fa fa-th" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" >
+        <div class="row app-shortcuts">
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>Calendar</span>
+          </a>
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <span>Files</span>
+          </a>
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <span>Email</span>
+          </a>
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>
+            <span>Reports</span>
+          </a>
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            <span>News</span>
+          </a>
+          <a href="" class="col-4 app-shortcuts-item">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+            <span>Gallery</span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="" data-toggle="dropdown" class="top-nav-notify">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a href="" class="dropdown-item">Action 1</a>
+        <a href="" class="dropdown-item">Acrion 2</a>
+        <a href="" class="dropdown-item">Action 3</a>
+      </div>
+    </li>
+  </ul>
+  <div class="user">
+    <div class="user-info dropdown">
+      <img class="user-img" src="../../assets/images/V14pjbfk.jpg" alt="" data-toggle="dropdown">
+      <div class="dropdown-menu dropdown-menu-right">
+        <a href="" class="dropdown-item">View profile</a>
+        <a href="" class="dropdown-item">Settings</a>
+        <a href="" class="dropdown-item">Log out</a>
+      </div>
+    </div>
+  </div>
+</div>
