@@ -1,8 +1,13 @@
 .profile{
+  margin: 16px 0;
+  background-color: #f5f3f4;
+  border: 1px solid #ddd;
+  padding: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 100;
+  text-align: center;
+  border-radius: 16px;
   form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     input, select{
       font-family: 'Nunito Sans', sans-serif;
@@ -14,6 +19,7 @@
       font-weight: 100;
       border:1px solid #b3cccc;
       outline-color: #b3cccc;
+      display: inline-block;
     }
   }
 }
@@ -23,7 +29,6 @@
   font-weight: 100;
   font-size: 25px;
   margin-bottom: 16px;
-  margin-top: 16px;
 }
 .form-control{
   width: 250px;
@@ -35,9 +40,26 @@
 .error{
   display: none;;
   color: red;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 100;
 }
 .has-error{
   display: block;
+}
+.profile-photo{
+  width:150px;
+  height: 150px;
+  text-align: center;
+  display: inline-block;
+  img{
+    width: 100%;
+    border: 5px solid #fff;
+  }
+}
+.profile-label{
+  display: inline-block;
+  width: 160px;
+  text-align: left;
+}
+.input-block{
+  display: inline-block;
+  vertical-align: top;
 }

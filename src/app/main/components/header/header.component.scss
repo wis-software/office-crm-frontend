@@ -10,6 +10,7 @@ $grey: #807e7b;
   font-weight: 100;
   background-color: #f5f3f4;
   border-bottom: 1px solid #ccc8c5;
+  z-index: 10;
   &.open{
     padding-left: 273px;
     transition: all 0.2s ease-out 0s;
