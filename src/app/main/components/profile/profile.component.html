@@ -13,9 +13,10 @@
             </div>
             <div class="col-lg-9">
               <div class="form-grout-title">General information</div>
+              <!-- first name -->
               <div class="form-group">
                 <label class="profile-label"
-                       for="firstName">Name</label>
+                       for="firstName">First name</label>
                 <div class="input-block">
                   <input type="text"
                          name="firstName"
@@ -29,6 +30,24 @@
                   </div>
                 </div>
               </div>
+              <!-- middle name -->
+              <div class="form-group">
+                <label class="profile-label"
+                       for="middleName">Middle name</label>
+                <div class="input-block">
+                  <input type="text"
+                         name="middleName"
+                         class="form-control"
+                         id="middleName"
+                         [formControl]="profileForm.controls['middleName']">
+                  <div class="error"
+                       [ngClass]="{'has-error': !profileForm.controls['middleName'].valid &&
+                                                 profileForm.controls['middleName'].touched}">
+                    Middle name is required
+                  </div>
+                </div>
+              </div>
+              <!-- last name -->
               <div class="form-group">
                 <label class="profile-label"
                        for="lastName">Last name</label>
@@ -45,22 +64,43 @@
                   </div>
                 </div>
               </div>
+              <!-- TODO: add angular datepicker for birthday and workstarted fields -->
+              <!-- birthday -->
               <div class="form-group">
                 <label class="profile-label"
-                       for="startDate">Start date</label>
+                       for="birthday">Birthday</label>
+                <div class="input-block">
+                  <input type="date"
+                         name="birthday"
+                         id="birthday"
+                         class="form-control"
+                         [formControl]="profileForm.controls['birthday'] ">
+                  <div class="error"
+                       [ngClass]="{'has-error': !profileForm.controls['birthday'].valid &&
+                                                 profileForm.controls['birthday'].touched}">
+                    Birthday is required
+                  </div>
+                </div>
+              </div>
+              <!-- work started -->
+              <div class="form-group">
+                <label class="profile-label"
+                       for="workStarted">Start date</label>
                 <div class="input-block">
                   <input type="date"
                          name="startDate"
-                         id="startDate"
+                         id="workStarted"
                          class="form-control"
-                         [formControl]="profileForm.controls['startDate']">
+                         [formControl]="profileForm.controls['workStarted']">
                   <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['startDate'].valid &&
-                                                 profileForm.controls['startDate'].touched}">
+                       [ngClass]="{'has-error': !profileForm.controls['workStarted'].valid &&
+                                                 profileForm.controls['workStarted'].touched}">
                     Start date is required
                   </div>
                 </div>
               </div>
+              <!-- position -->
+              <!-- TODO: catch position's list from backend instead of using predefined values -->
               <div class="form-group">
                 <label class="profile-label"
                        for="position">Position</label>
@@ -87,37 +127,41 @@
                   </div>
                 </div>
               </div>
-              <div class="contacs">
+              <!-- TODO: add specializations -->
+              <div class="contacts">
                 <div class="form-grout-title">Contacts</div>
+                <!-- phoneNumber -->
                 <div class="form-group">
                   <label class="profile-label"
-                         for="phone">Phone</label>
+                         for="phoneNumber">Phone number</label>
                   <input type="tel"
-                         name="phone"
-                         id="phone"
+                         name="phoneNumber"
+                         id="phoneNumber"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['phone']">
+                         [formControl]="profileForm.controls['phoneNumber']">
                 </div>
+                <!-- additionalPhoneNumber -->
                 <div class="form-group">
                   <label class="profile-label"
-                         for="phone">Address</label>
-                  <input type="text"
-                         name="address"
-                         id="address"
+                         for="additionalPhoneNumber">Additional phone</label>
+                  <input type="tel"
+                         name="additionalPhoneNumber"
+                         id="additionalPhoneNumber"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['address']">
+                         [formControl]="profileForm.controls['additionalPhoneNumber']">
                 </div>
+                <!-- email -->
                 <div class="form-group">
                   <label class="profile-label"
-                         for="skype">Skype</label>
+                         for="email">Email</label>
                   <input type="text"
-                         name="skype"
-                         id="skype"
+                         name="email"
+                         id="email"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['skype']">
+                         [formControl]="profileForm.controls['email']">
                 </div>
               </div>
               <div class="form-group">

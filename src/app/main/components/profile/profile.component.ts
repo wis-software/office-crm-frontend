@@ -18,29 +18,23 @@ export class ProfileComponent implements OnInit {
 
     this.profileForm = this._fb.group({
       firstName: ['',  Validators.required],
+      middleName: ['', Validators.required],
       lastName: ['', Validators.required],
-      startDate: ['', Validators.required],
+      birthday: ['', Validators.required],
+      workStarted: ['', Validators.required],
       position: ['', Validators.required],
-      phone: [''],
-      address: [''],
-      skype: ['']
+      phoneNumber: [''],
+      additionalPhoneNumber: [''],
+      email: [''],
     })
-
   }
 
   ngOnInit() {
     this.profileService.getProfiles()
       .subscribe((results) => {
         this.profile = new ProfileModel(results.employees[0]);
-        // this.profileForm.setValue({
-        //   firstName: this.profiles.firstName,
-        //   lastName: this.profiles.lastName,
-        //   startDate: '',
-        //   position: '',
-        //   phone: '',
-        //   address: '-',
-        //   skype: '-'
-        // });
+        this.profileForm.patchValue(this.profile);
+        console.log(this.profile);
       });
   }
 
