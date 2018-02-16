@@ -7,6 +7,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from '../app.routing';
 
+import { ProfileService } from './components/profile/profile.service';
+
 @NgModule({
   declarations: [
     MainMenuComponent,
@@ -20,8 +22,8 @@ import { routing } from '../app.routing';
     ReactiveFormsModule,
     routing
   ],
-  providers: [],
-  bootstrap: [MainComponent],
+  providers: [ ProfileService ],
+  bootstrap: [ MainComponent ],
   exports: [ MainComponent ]
 })
 
