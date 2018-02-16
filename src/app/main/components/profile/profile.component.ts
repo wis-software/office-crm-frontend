@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfileService } from './profile.service';
+import { ProfileModel } from './profile.model';
 
 @Component({
   selector: 'ws-profile',
@@ -9,9 +10,8 @@ import { ProfileService } from './profile.service';
 })
 
 export class ProfileComponent implements OnInit {
-
   private profileForm: FormGroup;
-  public profiles: any = {};
+  public profile: ProfileModel;
 
   constructor(private _fb: FormBuilder,
               private  profileService: ProfileService) {
@@ -29,21 +29,18 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('on init');
     this.profileService.getProfiles()
       .subscribe((results) => {
-        this.profiles = results.employees[0];
-        this.profileForm.setValue({
-          firstName: this.profiles.firstName,
-          lastName: this.profiles.lastName,
-          startDate: '',
-          position: '',
-          phone: '',
-          address: '',
-          skype: ''
-        });
-        console.log(this.profiles.firstName);
-        console.log(this.profiles);
+        this.profile = new ProfileModel(results.employees[0]);
+        // this.profileForm.setValue({
+        //   firstName: this.profiles.firstName,
+        //   lastName: this.profiles.lastName,
+        //   startDate: '',
+        //   position: '',
+        //   phone: '',
+        //   address: '-',
+        //   skype: '-'
+        // });
       });
   }
 

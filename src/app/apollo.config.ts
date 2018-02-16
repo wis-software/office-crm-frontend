@@ -26,7 +26,7 @@ export class GraphQLModule {
     const authMiddleware = new ApolloLink((operation, forward) => {
       operation.setContext({
         headers: new HttpHeaders().set('Authorization',
-          'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTE4NzY5MDAwLCJlbWFpbCI6ImUuY2hhdHprb0B3aXMuZXUuY29tIiwib3JpZ19pYXQiOjE1MTg3NjU0MDB9.CwwuU5-MfddGKdQkF0SpVhXX87YUWsPZb4sbIrn8Cf8')
+          'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTE4Nzg1MjUzLCJlbWFpbCI6ImUuY2hhdHprb0B3aXMuZXUuY29tIiwib3JpZ19pYXQiOjE1MTg3ODE2NTN9.IXyfI3MR3TangOQs58AQ1YSg5SZN4rTcGbHSUIVOFJo')
       });
       return forward(operation);
     });

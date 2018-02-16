@@ -10,15 +10,21 @@ export class ProfileService {
   public getProfiles() {
     return this.apollo.query<any>({
       query: gql`
-        query {
+        query{
           employees {
             id
             firstName
+            middleName
             lastName
-            specializations {
+            birthday
+            workStarted
+            position {
+              id
               name
             }
-            notes
+            phoneNumber
+            additionalPhoneNumber
+            contactEmail
           }
         }
       `,
