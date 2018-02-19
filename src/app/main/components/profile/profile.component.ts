@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from './profile.service';
 import { ProfileModel } from './profile.model';
+import { PositionModel } from './position.model';
 
 @Component({
   selector: 'ws-profile',
@@ -12,6 +13,7 @@ import { ProfileModel } from './profile.model';
 export class ProfileComponent implements OnInit {
   private profileForm: FormGroup;
   public profile: ProfileModel;
+  public positions: PositionModel[];
 
   constructor(private _fb: FormBuilder,
               private  profileService: ProfileService) {
@@ -30,11 +32,22 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPositions();
+    this.getProfiles();
+  }
+
+  private getPositions() {
+    this.profileService.getPositions()
+      .subscribe((results: PositionModel[]) => {
+        this.positions = results;
+      });
+  }
+
+  private getProfiles() {
     this.profileService.getProfiles()
       .subscribe((results) => {
-        this.profile = new ProfileModel(results.employees[0]);
+        this.profile = new ProfileModel(results);
         this.profileForm.patchValue(this.profile);
-        console.log(this.profile);
       });
   }
 

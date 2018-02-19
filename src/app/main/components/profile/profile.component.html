@@ -88,7 +88,7 @@
                        for="workStarted">Start date</label>
                 <div class="input-block">
                   <input type="date"
-                         name="startDate"
+                         name="workStarted"
                          id="workStarted"
                          class="form-control"
                          [formControl]="profileForm.controls['workStarted']">
@@ -100,7 +100,6 @@
                 </div>
               </div>
               <!-- position -->
-              <!-- TODO: catch position's list from backend instead of using predefined values -->
               <div class="form-group">
                 <label class="profile-label"
                        for="position">Position</label>
@@ -113,11 +112,8 @@
                     <option selected disabled>
                       Your position
                     </option>
-                    <option value="frontend developer">
-                      frontend developer
-                    </option>
-                    <option value="backend developer">
-                      backend developer
+                    <option *ngFor="let position of positions" value="position.name">
+                      {{ position.name }}
                     </option>
                   </select>
                   <div class="error"
