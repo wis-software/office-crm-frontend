@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from './profile.service';
 import { ProfileModel } from './profile.model';
 import { PositionModel } from './position.model';
+import { SpecializationModel } from './specialization.model';
 
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   private profileForm: FormGroup;
   public profile: ProfileModel;
   public positions: PositionModel[];
+  public specializations: SpecializationModel[];
 
   constructor(private _fb: FormBuilder,
               private _localeService: BsLocaleService,
@@ -37,6 +39,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.getPositions();
     this.getProfiles();
+    this.getSpecializations();
   }
 
   private getPositions() {
@@ -46,9 +49,16 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  private getSpecializations() {
+    this.profileService.getSpecializations()
+      .subscribe((results: SpecializationModel[]) => {
+        this.specializations = results;
+      })
+  }
+
   private getProfiles() {
     this.profileService.getProfiles()
-      .subscribe((results) => {
+      .subscribe((results: ProfileModel) => {
         this.profile = new ProfileModel(results);
         this.profileForm.patchValue(this.profile);
       });
