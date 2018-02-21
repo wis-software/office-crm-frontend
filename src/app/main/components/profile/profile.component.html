@@ -22,7 +22,7 @@
                          name="firstName"
                          class="form-control"
                          id="firstName"
-                         [formControl]="profileForm.controls['firstName']">
+                         formControlName="firstName">
                   <div class="error"
                        [ngClass]="{'has-error': !profileForm.controls['firstName'].valid &&
                                                  profileForm.controls['firstName'].touched}">
@@ -39,7 +39,7 @@
                          name="middleName"
                          class="form-control"
                          id="middleName"
-                         [formControl]="profileForm.controls['middleName']">
+                         formControlName="middleName">
                   <div class="error"
                        [ngClass]="{'has-error': !profileForm.controls['middleName'].valid &&
                                                  profileForm.controls['middleName'].touched}">
@@ -70,11 +70,13 @@
                 <label class="profile-label"
                        for="birthday">Birthday</label>
                 <div class="input-block">
-                  <input type="date"
-                         name="birthday"
-                         id="birthday"
-                         class="form-control"
-                         [formControl]="profileForm.controls['birthday'] ">
+                  <input
+                    type="text"
+                    id="birthday"
+                    class="form-control"
+                    placeholder="Datepicker"
+                    bsDatepicker
+                    formControlName="birthday" />
                   <div class="error"
                        [ngClass]="{'has-error': !profileForm.controls['birthday'].valid &&
                                                  profileForm.controls['birthday'].touched}">
@@ -87,11 +89,13 @@
                 <label class="profile-label"
                        for="workStarted">Start date</label>
                 <div class="input-block">
-                  <input type="date"
-                         name="workStarted"
-                         id="workStarted"
-                         class="form-control"
-                         [formControl]="profileForm.controls['workStarted']">
+                  <input
+                    type="text"
+                    id="workStarted"
+                    class="form-control"
+                    placeholder="Datepicker"
+                    bsDatepicker
+                    formControlName="workStarted" />
                   <div class="error"
                        [ngClass]="{'has-error': !profileForm.controls['workStarted'].valid &&
                                                  profileForm.controls['workStarted'].touched}">
@@ -108,11 +112,11 @@
                           name="position"
                           class="form-control"
                           id="position"
-                          [formControl]="profileForm.controls['position']">
+                          formControlName="position">
                     <option selected disabled>
                       Your position
                     </option>
-                    <option *ngFor="let position of positions" value="position.name">
+                    <option *ngFor="let position of positions" [value]="position.name">
                       {{ position.name }}
                     </option>
                   </select>
@@ -135,7 +139,7 @@
                          id="phoneNumber"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['phoneNumber']">
+                         formControlName="phoneNumber">
                 </div>
                 <!-- additionalPhoneNumber -->
                 <div class="form-group">
@@ -146,7 +150,7 @@
                          id="additionalPhoneNumber"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['additionalPhoneNumber']">
+                         formControlName="additionalPhoneNumber">
                 </div>
                 <!-- email -->
                 <div class="form-group">
@@ -157,7 +161,7 @@
                          id="email"
                          class="form-control"
                          placeholder=""
-                         [formControl]="profileForm.controls['email']">
+                         formControlName="email">
                 </div>
               </div>
               <div class="form-group">

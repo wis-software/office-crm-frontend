@@ -9,6 +9,12 @@ import { routing } from '../app.routing';
 
 import { ProfileService } from './components/profile/profile.service';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { enGbLocale } from 'ngx-bootstrap/locale'
+
+defineLocale('en-gb', enGbLocale);
+
 @NgModule({
   declarations: [
     MainMenuComponent,
@@ -20,7 +26,8 @@ import { ProfileService } from './components/profile/profile.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    BsDatepickerModule.forRoot()
   ],
   providers: [ ProfileService ],
   bootstrap: [ MainComponent ],

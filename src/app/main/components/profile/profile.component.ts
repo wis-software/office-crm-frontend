@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from './profile.service';
 import { ProfileModel } from './profile.model';
 import { PositionModel } from './position.model';
+
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'ws-profile',
@@ -16,8 +18,9 @@ export class ProfileComponent implements OnInit {
   public positions: PositionModel[];
 
   constructor(private _fb: FormBuilder,
+              private _localeService: BsLocaleService,
               private  profileService: ProfileService) {
-
+    this._localeService.use('en-gb');
     this.profileForm = this._fb.group({
       firstName: ['',  Validators.required],
       middleName: ['', Validators.required],
@@ -27,7 +30,7 @@ export class ProfileComponent implements OnInit {
       position: ['', Validators.required],
       phoneNumber: [''],
       additionalPhoneNumber: [''],
-      email: [''],
+      email: ['']
     })
   }
 

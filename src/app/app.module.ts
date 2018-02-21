@@ -25,7 +25,7 @@ import { MainModule } from './main/main.module';
     AuthModule,
     MainModule,
     // Routes
-    routing,
+    routing
   ],
   declarations: [
     AppComponent,
