@@ -1,0 +1,24 @@
+<div class="main-menu" [ngClass]="{'open': open}" *ngIf="router.url !== '/login'">
+  <a href="" class="logo">
+    <img class="logo-logo" src="../../../../assets/images/logo-logo.png" alt="">
+    <img class="logo-words" src="../../../../assets/images/logo-words.png" alt="">
+  </a>
+  <div class="sandwich" (click)="shareDate()">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <div>
+    <a href="" class="menu-item">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <span>Dashboard</span>
+    </a>
+    <a href="" class="menu-item" routerLink="/login" (click)="shareHideMenu">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <span>Login</span>
+    </a>
+    <a href="" class="menu-item" routerLink="/profile">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <span>Profile page</span>
+    </a>
+  </div>
+</div>
+
