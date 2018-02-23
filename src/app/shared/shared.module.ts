@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApolloModule } from 'apollo-angular';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     // Modules
     CommonModule,
     ReactiveFormsModule,
+    ApolloModule,
   ]
 })
 export class SharedModule {

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth';
+import { ApolloGqlModule } from './apollo-gql';
 import { SharedModule } from './shared/shared.module';
-import { GraphQLModule } from './apollo.config';
 
 import { AppComponent } from './app.component';
 
@@ -20,9 +20,9 @@ import '../styles/vendor.scss';
     // Modules
     BrowserModule,
     SharedModule,
+    ApolloGqlModule,
     AuthModule,
     HttpClientModule,
-    GraphQLModule,
 
     // Routes
     routing,
