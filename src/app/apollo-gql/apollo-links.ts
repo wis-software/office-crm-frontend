@@ -8,7 +8,7 @@ export const authMiddleware = new ApolloLink((operation, forward) => {
 
   if (token) {
     operation.setContext({
-      headers: new HttpHeaders().set('Authorization', token)
+      headers: new HttpHeaders().set('Authorization', `jwt ${token}`)
     });
   }
   return forward(operation);

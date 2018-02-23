@@ -32,7 +32,7 @@ export class AppComponent {
             }`
       })
       .map((response: ApolloQueryResult<any>) => {
-        return response.data.employee;
+        return response.data.employees;
       })
       .subscribe((data: any) => {
         alert('Ok');
