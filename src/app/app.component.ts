@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
+
+// Apollo & GQL
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ApolloQueryResult } from 'apollo-client';
+
+// Other
+import { CurrentUserService } from './shared';
 
 
 @Component({
@@ -10,7 +15,8 @@ import { ApolloQueryResult } from 'apollo-client';
 })
 
 export class AppComponent {
-  constructor(private _apollo: Apollo) {
+  constructor(public user: CurrentUserService,
+              private _apollo: Apollo) {
 
   }
 

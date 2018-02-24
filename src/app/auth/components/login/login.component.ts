@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AuthService } from '../../services';
 
 @Component({
@@ -11,7 +13,8 @@ export class LoginComponent {
   public  loginForm: FormGroup;
 
   constructor(private _fb: FormBuilder,
-              private _auth: AuthService) {
+              private _auth: AuthService,
+              private _router: Router) {
     this.createForm();
   }
 
@@ -19,6 +22,7 @@ export class LoginComponent {
     const { username, password } = this.loginForm.value;
     this._auth.login(username, password).subscribe(() => {
       alert('Auth successful');
+      this._router.navigate(['']);
     });
   }
 

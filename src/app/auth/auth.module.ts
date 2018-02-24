@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './components/login';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared';
+
+import { AuthGuard } from './guards';
+
+import { LoginComponent } from './components';
 import { AuthService } from './services';
 
 @NgModule({
@@ -13,7 +16,8 @@ import { AuthService } from './services';
   ],
 
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ]
 })
 export class AuthModule {

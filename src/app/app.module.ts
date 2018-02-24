@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from './auth';
 import { ApolloGqlModule } from './apollo-gql';
+
 import { SharedModule } from './shared/shared.module';
+import { CurrentUserService } from './shared';
 
 import { AppComponent } from './app.component';
 
@@ -33,6 +35,9 @@ import '../styles/vendor.scss';
     // Router components
     routingComponents,
   ],
+  providers: [
+    CurrentUserService,
+  ]
 })
 
 export class AppModule {
