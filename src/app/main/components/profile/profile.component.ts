@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl, PatternValidator} from '@angular/forms';
 import { ProfileService } from './profile.service';
 import { ProfileModel } from './profile.model';
 import { PositionModel } from './position.model';
@@ -30,9 +30,9 @@ export class ProfileComponent implements OnInit {
       birthday: ['', Validators.required],
       workStarted: ['', Validators.required],
       position: ['', Validators.required],
-      phoneNumber: [''],
-      additionalPhoneNumber: [''],
-      email: ['']
+      phoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
+      additionalPhoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
+      email: ['', Validators.email]
     })
   }
 
@@ -68,4 +68,13 @@ export class ProfileComponent implements OnInit {
     console.log('+');
   }
 
+  get firstName() { return this.profileForm.get('firstName'); }
+  get middleName() { return this.profileForm.get('middleName'); }
+  get lastName() { return this.profileForm.get('lastName'); }
+  get birthday() { return this.profileForm.get('birthday'); }
+  get workStarted() { return this.profileForm.get('workStarted'); }
+  get position() { return this.profileForm.get('position'); }
+  get phoneNumber() { return this.profileForm.get('phoneNumber'); }
+  get additionalPhoneNumber() { return this.profileForm.get('additionalPhoneNumber'); }
+  get email() { return this.profileForm.get('email'); }
 }

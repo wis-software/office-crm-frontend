@@ -38,11 +38,12 @@
   text-align: center;
 }
 .error{
-  display: none;;
-  color: red;
+  display: none;
+
 }
 .has-error{
   display: block;
+  color: red;
 }
 .profile-photo{
   width:150px;

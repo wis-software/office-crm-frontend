@@ -12,6 +12,7 @@ import { ProfileService } from './components/profile/profile.service';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { enGbLocale } from 'ngx-bootstrap/locale'
+import {NgxMaskModule} from 'ngx-mask'
 
 defineLocale('en-gb', enGbLocale);
 
@@ -27,7 +28,8 @@ defineLocale('en-gb', enGbLocale);
     FormsModule,
     ReactiveFormsModule,
     routing,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [ ProfileService ],
   bootstrap: [ MainComponent ],

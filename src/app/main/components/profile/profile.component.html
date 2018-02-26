@@ -23,11 +23,9 @@
                          class="form-control"
                          id="firstName"
                          formControlName="firstName">
-                  <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['firstName'].valid &&
-                                                 profileForm.controls['firstName'].touched}">
-                    First name is required
-                  </div>
+                  <span class="has-error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                     error
+                  </span>
                 </div>
               </div>
               <!-- middle name -->
@@ -137,19 +135,24 @@
                          name="phoneNumber"
                          id="phoneNumber"
                          class="form-control"
-                         placeholder=""
-                         formControlName="phoneNumber">
+                         formControlName="phoneNumber"
+                         placeholder="+7 (900) 000-00-00"
+                         mask='+0 (000) 000-00-00'>
                 </div>
+                <span class="has-error" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                  invalid phone number
+                </span>
                 <!-- additionalPhoneNumber -->
                 <div class="form-group">
                   <label class="profile-label"
-                         for="additionalPhoneNumber">Additional phone</label>
+                  for="additionalPhoneNumber">Additional phone</label>
                   <input type="tel"
                          name="additionalPhoneNumber"
                          id="additionalPhoneNumber"
                          class="form-control"
-                         placeholder=""
-                         formControlName="additionalPhoneNumber">
+                         formControlName="additionalPhoneNumber"
+                         placeholder="+7 (900) 000-00-00"
+                         mask='+0 (000) 000-00-00'>
                 </div>
                 <!-- email -->
                 <div class="form-group">
@@ -159,9 +162,14 @@
                          name="email"
                          id="email"
                          class="form-control"
-                         placeholder=""
-                         formControlName="email">
+                         placeholder="yourname@wis.software"
+                         formControlName="email"
+                         email
+                         pattern="[a-zA-Z0-9.-_-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
                 </div>
+                <span class="has-error" *ngIf="email.invalid && email.touched">
+                     Invalid email
+                  </span>
               </div>
               <div class="form-group">
                 <button type="submit"
