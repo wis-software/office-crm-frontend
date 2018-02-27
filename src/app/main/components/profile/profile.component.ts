@@ -23,20 +23,10 @@ export class ProfileComponent implements OnInit {
               private _localeService: BsLocaleService,
               private  profileService: ProfileService) {
     this._localeService.use('en-gb');
-    this.profileForm = this._fb.group({
-      firstName: ['',  Validators.required],
-      middleName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      birthday: ['', Validators.required],
-      workStarted: ['', Validators.required],
-      position: ['', Validators.required],
-      phoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
-      additionalPhoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
-      email: ['', Validators.email]
-    })
   }
 
   ngOnInit() {
+    this.initProfileForm();
     this.getPositions();
     this.getProfiles();
     this.getSpecializations();
@@ -64,7 +54,21 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  private login() {
+  private initProfileForm () {
+    this.profileForm = this._fb.group({
+      firstName: ['',  Validators.required],
+      middleName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      birthday: ['', Validators.required],
+      workStarted: ['', Validators.required],
+      position: ['', Validators.required],
+      phoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
+      additionalPhoneNumber: ['', Validators.pattern('[1-9]{1}[0-9]{10}')],
+      email: ['', Validators.email]
+    })
+  }
+
+  private sendForm() {
     console.log('+');
   }
 

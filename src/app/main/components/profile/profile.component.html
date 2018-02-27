@@ -3,7 +3,7 @@
     <div class="offset-1 col-lg-10">
       <div class="profile">
         <div class="profile-title">Profile</div>
-        <form (ngSubmit)="login()"
+        <form (ngSubmit)="sendForm()"
               [formGroup]="profileForm">
           <div class="row">
             <div class="col-lg-3">
@@ -12,7 +12,7 @@
               </div>
             </div>
             <div class="col-lg-9">
-              <div class="form-grout-title">General information</div>
+              <div class="form-group-title">General information</div>
               <!-- first name -->
               <div class="form-group">
                 <label class="profile-label"
@@ -23,9 +23,10 @@
                          class="form-control"
                          id="firstName"
                          formControlName="firstName">
-                  <span class="has-error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-                     error
-                  </span>
+                  <div class="has-error"
+                       *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                     First name is required
+                  </div>
                 </div>
               </div>
               <!-- middle name -->
@@ -38,9 +39,8 @@
                          class="form-control"
                          id="middleName"
                          formControlName="middleName">
-                  <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['middleName'].valid &&
-                                                 profileForm.controls['middleName'].touched}">
+                  <div class="has-error"
+                       *ngIf="middleName.invalid && (middleName.dirty || middleName.touched)">
                     Middle name is required
                   </div>
                 </div>
@@ -54,11 +54,10 @@
                          name="lastName"
                          id="lastName"
                          class="form-control"
-                         [formControl]="profileForm.controls['lastName']">
-                  <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['lastName'].valid &&
-                                                 profileForm.controls['lastName'].touched}">
-                    Lastname is required
+                         formControlName="lastName">
+                  <div class="has-error"
+                       *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    Last name is required
                   </div>
                 </div>
               </div>
@@ -71,12 +70,10 @@
                     type="text"
                     id="birthday"
                     class="form-control"
-                    placeholder="Datepicker"
                     bsDatepicker
-                    formControlName="birthday" />
-                  <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['birthday'].valid &&
-                                                 profileForm.controls['birthday'].touched}">
+                    formControlName="birthday">
+                  <div class="has-error"
+                       *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
                     Birthday is required
                   </div>
                 </div>
@@ -90,12 +87,10 @@
                     type="text"
                     id="workStarted"
                     class="form-control"
-                    placeholder="Datepicker"
                     bsDatepicker
-                    formControlName="workStarted" />
+                    formControlName="workStarted">
                   <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['workStarted'].valid &&
-                                                 profileForm.controls['workStarted'].touched}">
+                       *ngIf="workStarted.invalid && (workStarted.dirty || workStarted.touched)">
                     Start date is required
                   </div>
                 </div>
@@ -117,20 +112,20 @@
                       {{ position.name }}
                     </option>
                   </select>
-                  <div class="error"
-                       [ngClass]="{'has-error': !profileForm.controls['position'].valid &&
-                                                 profileForm.controls['position'].touched}">
+                  <div class="has-error"
+                       *ngIf="position.invalid && (position.dirty || position.touched)">
                     Position is required
                   </div>
                 </div>
               </div>
-              <!-- TODO: add specializations -->
-              <div class="contacts">
-                <div class="form-grout-title">Contacts</div>
-                <!-- phoneNumber -->
-                <div class="form-group">
-                  <label class="profile-label"
-                         for="phoneNumber">Phone number</label>
+
+              <div class="form-group-title">Contacts</div>
+
+              <!-- phoneNumber -->
+              <div class="form-group">
+                <label class="profile-label"
+                       for="phoneNumber">Phone number</label>
+                <div class="input-block">
                   <input type="tel"
                          name="phoneNumber"
                          id="phoneNumber"
@@ -138,26 +133,35 @@
                          formControlName="phoneNumber"
                          placeholder="+7 (900) 000-00-00"
                          mask='+0 (000) 000-00-00'>
+                  <div class="has-error"
+                       *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+                    invalid phone number
+                  </div>
                 </div>
-                <span class="has-error" *ngIf="phoneNumber.invalid && phoneNumber.touched">
-                  invalid phone number
-                </span>
-                <!-- additionalPhoneNumber -->
-                <div class="form-group">
+              </div>
+              <!-- additionalPhoneNumber -->
+              <div class="form-group">
                   <label class="profile-label"
                   for="additionalPhoneNumber">Additional phone</label>
-                  <input type="tel"
-                         name="additionalPhoneNumber"
-                         id="additionalPhoneNumber"
-                         class="form-control"
-                         formControlName="additionalPhoneNumber"
-                         placeholder="+7 (900) 000-00-00"
-                         mask='+0 (000) 000-00-00'>
+                  <div class="input-block">
+                    <input type="tel"
+                           name="additionalPhoneNumber"
+                           id="additionalPhoneNumber"
+                           class="form-control"
+                           formControlName="additionalPhoneNumber"
+                           placeholder="+7 (900) 000-00-00"
+                           mask='+0 (000) 000-00-00'>
+                    <div class="has-error"
+                         *ngIf="additionalPhoneNumber.invalid && (additionalPhoneNumber.dirty || additionalPhoneNumber.touched)">
+                      invalid additional phone number
+                    </div>
+                  </div>
                 </div>
-                <!-- email -->
-                <div class="form-group">
-                  <label class="profile-label"
-                         for="email">Email</label>
+              <!-- email -->
+              <div class="form-group">
+                <label class="profile-label"
+                       for="email">Email</label>
+                <div class="input-block">
                   <input type="text"
                          name="email"
                          id="email"
@@ -166,10 +170,10 @@
                          formControlName="email"
                          email
                          pattern="[a-zA-Z0-9.-_-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+                  <div class="has-error" *ngIf="email.invalid && email.touched">
+                    Invalid email
+                  </div>
                 </div>
-                <span class="has-error" *ngIf="email.invalid && email.touched">
-                     Invalid email
-                  </span>
               </div>
               <div class="form-group">
                 <button type="submit"
