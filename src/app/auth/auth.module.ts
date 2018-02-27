@@ -1,20 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AuthorisationComponent } from './components/authorisation.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login';
+import { SharedModule } from '../shared/shared.module';
+import { AuthService } from './services';
 
 @NgModule({
-  declarations: [
-    AuthorisationComponent
-  ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule,
   ],
-  providers: [],
-  bootstrap: [ AuthorisationComponent ],
-  exports: [AuthorisationComponent]
-})
 
-export class AuthModule { }
+  declarations: [
+    LoginComponent,
+  ],
+
+  providers: [
+    AuthService
+  ]
+})
+export class AuthModule {
+}

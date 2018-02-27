@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AuthModule } from './auth';
+import { ApolloGqlModule } from './apollo-gql';
 import { SharedModule } from './shared/shared.module';
-import { GraphQLModule } from './apollo.config';
 
 import { AppComponent } from './app.component';
 
@@ -11,8 +12,7 @@ import { AppComponent } from './app.component';
 import { routing, routingComponents } from './app.routing';
 
 import '../styles/vendor.scss';
-import { AuthModule } from './auth/auth.module';
-import { MainModule } from './main/main.module';
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -20,15 +20,16 @@ import { MainModule } from './main/main.module';
     // Modules
     BrowserModule,
     SharedModule,
-    HttpClientModule,
-    GraphQLModule,
+    ApolloGqlModule,
     AuthModule,
-    MainModule,
+    HttpClientModule,
+
     // Routes
     routing
   ],
   declarations: [
     AppComponent,
+
     // Router components
     routingComponents,
   ],
