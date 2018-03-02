@@ -1,0 +1,22 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+
+import { ApolloGqlModule } from './apollo-gql';
+import { APIInterceptor } from './interceptors';
+import { CurrentUserService } from './services';
+
+
+@NgModule({
+  imports: [
+    ApolloGqlModule,
+  ],
+  providers: [
+    CurrentUserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true,
+    },
+  ],
+})
+export class CoreModule {}

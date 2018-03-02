@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Alias } from 'tsmodels';
 
-import { EmployeeModel } from '../models';
+import { EmployeeModel } from '../../shared/models';
 
 
 @Injectable()
@@ -14,14 +14,6 @@ export class CurrentUserService extends EmployeeModel {
   }
 
   public updateUser(data: any = {}) {
-    if (data.email) {
-      this.email = data.email;
-    }
-
-    if (data.user_id) {
-      this.userId = data.user_id;
-    }
-
     if (data.username) {
       this.username = data.username;
     }
@@ -44,4 +36,5 @@ export class CurrentUserService extends EmployeeModel {
       this[field] = null;
     }
   }
+
 }

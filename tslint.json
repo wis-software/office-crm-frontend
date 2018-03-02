@@ -84,8 +84,8 @@
     ],
 
     // Codelyzer
-    "directive-selector": [true, "attribute", ["ws"], "camelCase"],
-    "component-selector": [true, "element", ["ws"], "kebab-case"],
+    "directive-selector": [true, "attribute", ["wis"], "camelCase"],
+    "component-selector": [true, "element", ["wis"], "kebab-case"],
 
     "angular-whitespace": [true, "check-interpolation", "check-semicolon"],
 

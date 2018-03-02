@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-
-import { Observable, Observer } from 'rxjs';
+import { CanActivate } from '@angular/router';
+import { of } from 'rxjs/observable/of';
+import { _throw as throwError } from 'rxjs/observable/throw';
+import { catchError, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '../services';
 
@@ -9,45 +10,20 @@ import { AuthService } from '../services';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router,
-              private auth: AuthService) {
-    this.auth.readToken();
-  }
+  constructor(private _authService: AuthService) {}
 
   public canActivate() {
-    const auth = this.auth;
-
-    if (auth.isAuth && auth.isUserLoaded) {
-      return true;
+    if (this._authService.token) {
+      return this._authService
+        .loadCurrentUser()
+        .pipe(
+          catchError(() => throwError(false)),
+          switchMap(() => of(true)),
+        );
     }
 
-    return Observable.create((observer: Observer<any>) => { // TODO simplify this method
-      if (auth.token && auth.isTokenExpired()) {
-        auth.refreshToken().subscribe((result) => {
-          if (result) {
-            auth.loadUser().subscribe(() => {
-              observer.next(true);
-            }, () => {
-              observer.next(false);
-              this.auth.isAuth = false;
-            })
-          } else {
-            this.auth.isAuth = false;
-            this.router.navigate(['login']);
-            observer.next(false);
-          }
-        })
-      } else if (auth.token) {
-        auth.loadUser().subscribe(() => {
-          observer.next(true);
-        }, () => {
-          observer.next(false);
-          this.auth.isAuth = false;
-        })
-      } else {
-        this.router.navigate(['login']);
-        observer.next(false);
-      }
-    }).take(1);
+    this._authService.logout();
+    return false;
   }
+
 }

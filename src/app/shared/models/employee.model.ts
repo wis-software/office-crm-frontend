@@ -1,17 +1,22 @@
 import { Model, Alias } from 'tsmodels';
 
+
 export class EmployeeModel extends Model {
 
-  @Alias() public email: string;
-  @Alias('user_id') public userId: number;
+  @Alias() public id: number;
   @Alias() public username: string;
 
   @Alias() public firstName: string;
   @Alias() public lastName: string;
 
-  constructor(employeeData: any = {}) {
+  constructor(data: any = {}) {
     super();
 
-    this._fromJSON(employeeData);
+    this._fromJSON(data);
   }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
 }
