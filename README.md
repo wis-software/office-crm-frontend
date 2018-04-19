@@ -13,6 +13,6 @@ Please, create new branches for new features and send PR when it will be ready f
 
 ### How to install and start coding:
 
-* `git clone https://github.com/wis-software/office-manager.git`
+* `git clone https://github.com/wis-software/office-crm-frontend.git`
 * `yarn install`
 * `yarn run serve` 
