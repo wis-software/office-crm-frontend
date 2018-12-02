@@ -32,7 +32,7 @@ export class CurrentUserService extends EmployeeModel {
   }
 
   public reset() { // TODO refactor this
-    for (let field in this) {
+    for (let field in Object.keys(this)) {
       this[field] = null;
     }
   }

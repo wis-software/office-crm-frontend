@@ -69,13 +69,12 @@ module.exports = function() {
       watchOptions: {
         ignore: /node_modules/
       },
-      proxy: {
-        '/api/*': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
-          secure: false
-        }
-      }
+      proxy: [{
+        context: ['/graphql', '/api'],
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false
+      }],
     }
 
   })};

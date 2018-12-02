@@ -8,7 +8,7 @@ Error.stackTraceLimit = Infinity;
 require('zone.js/dist/long-stack-trace-zone');
 
 export const environment: Environment = {
-  apiUrl: 'https://office-manager-test.herokuapp.com',
+  apiUrl: 'http://localhost:8000',
   production: false,
   showDevModule: true,
 
