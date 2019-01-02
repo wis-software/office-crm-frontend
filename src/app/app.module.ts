@@ -7,8 +7,8 @@ import { AppRouting } from './app.routing';
 
 import { AuthModule } from './auth';
 import { CoreModule } from './core';
-import { AdminComponent } from './admin';
 import { SharedModule } from './shared';
+import { LayoutModule } from './layout';
 
 import '../styles/vendor.scss';
 
@@ -24,12 +24,12 @@ import '../styles/vendor.scss';
     SharedModule,
     CoreModule,
     AuthModule,
+    LayoutModule,
 
     AppRouting,
   ],
   declarations: [
     AppComponent,
-    AdminComponent,
   ],
 })
 export class AppModule {}

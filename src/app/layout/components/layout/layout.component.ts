@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
-
-import { Apollo } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
+import { Component, OnInit } from '@angular/core';
 import gql from 'graphql-tag';
 
 import { map } from 'rxjs/operators';
 
-import { AuthService } from '../auth/services';
-import { CurrentUserService } from '../core/services';
+import { Apollo } from 'apollo-angular';
+import { ApolloQueryResult } from 'apollo-client';
+
+import { CurrentUserService } from '../../../core/services';
+import { AuthService } from '../../../auth/services';
 
 
 @Component({
-  selector: 'wis-admin',
-  templateUrl: 'admin.component.html',
+  selector: 'wis-layout',
+  templateUrl: './layout.component.html',
+  providers: [
+    CurrentUserService,
+
+  ],
 })
-export class AdminComponent {
+export class LayoutComponent implements OnInit {
 
   constructor(
     private _apollo: Apollo,
@@ -25,6 +29,8 @@ export class AdminComponent {
   get user() {
     return this._currentUserService;
   }
+
+  public ngOnInit() {}
 
   public logout() {
     this._authService.logout();
@@ -63,5 +69,4 @@ export class AdminComponent {
         },
       });
   }
-
 }

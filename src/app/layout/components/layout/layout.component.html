@@ -1,0 +1,14 @@
+<ng-container *ngIf="user.loaded; else loading">
+  <div class="navbar navbar-light bg-light">
+    <span class="navbar-brand">WIS Software</span>
+
+    <button class="btn btn-light ml-auto" (click)="refreshToken()">Refresh token</button>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+  </div>
+
+  <h1>Hello {{ user.fullName }}</h1>
+
+  <button class="btn btn-secondary" (click)="testRequest()">Test GQL Request</button>
+</ng-container>
+
+<ng-template #loading>Loading user...</ng-template>

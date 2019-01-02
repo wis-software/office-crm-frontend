@@ -14,16 +14,11 @@ export class AuthGuard implements CanActivate {
 
   public canActivate() {
     if (this._authService.token) {
-      return this._authService
-        .loadCurrentUser()
-        .pipe(
-          catchError(() => throwError(false)),
-          switchMap(() => of(true)),
-        );
+      return true;
+    } else {
+      this._authService.logout();
+      return false;
     }
-
-    this._authService.logout();
-    return false;
   }
 
 }

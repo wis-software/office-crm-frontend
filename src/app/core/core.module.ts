@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { ApolloGqlModule } from './apollo-gql';
 import { APIInterceptor } from './interceptors';
-import { CurrentUserService } from './services';
 
 
 @NgModule({
@@ -11,7 +10,6 @@ import { CurrentUserService } from './services';
     ApolloGqlModule,
   ],
   providers: [
-    CurrentUserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,

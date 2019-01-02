@@ -6,7 +6,7 @@ import { Environment } from './model';
 enableProdMode();
 
 export const environment: Environment = {
-  apiUrl: 'https://office-manager-test.herokuapp.com',
+  apiUrl: 'http://localhost:8000',
   production: true,
   showDevModule: false,
 

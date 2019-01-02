@@ -3,15 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './auth/components';
 import { AuthGuard } from './auth/guards';
-
-import { AdminComponent } from './admin';
+import { LayoutComponent } from './layout';
 
 
 export const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,
-    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'login',

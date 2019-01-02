@@ -3,14 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Apollo } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
-import gql from 'graphql-tag';
 
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { EmployeeModel } from '../../shared/models';
-import { CurrentUserService } from '../../core/services';
 import { JwtHelper } from '../helpers';
 
 
@@ -27,7 +23,6 @@ export class AuthService {
     private _httpClient: HttpClient,
     private _apollo: Apollo,
     private _router: Router,
-    private _currentUserService: CurrentUserService,
   ) {
     const token = localStorage.getItem(TOKEN_PREFIX);
 
@@ -84,8 +79,6 @@ export class AuthService {
    * Clear all cookies
    */
   public logout() {
-    this._currentUserService.reset();
-
     this._token = void 0;
     localStorage.removeItem(TOKEN_PREFIX);
 
@@ -119,36 +112,10 @@ export class AuthService {
     const tokenInfo = this._jwtHelper.decodeToken(token);
 
     if (tokenInfo) {
-      this._currentUserService.updateUser(tokenInfo);
-
       this._token = token;
       localStorage.setItem(TOKEN_PREFIX, this._token);
     } else {
       this.logout();
     }
   }
-
-  /**
-   * Load active user
-   * @returns {Observable<EmployeeModel>}
-   */
-  public loadCurrentUser() {
-    return this._apollo
-      .query({
-        query: gql`
-          query loadCurrentUser {
-            currentEmployee {
-              id,
-              firstName,
-              lastName,
-            }
-          }
-        `,
-      })
-      .pipe(
-        map((response: ApolloQueryResult<any>) => response.data.currentEmployee),
-        tap((currentUser) => this._currentUserService.updateUser(currentUser)),
-      );
-  }
-
 }
