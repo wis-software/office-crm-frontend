@@ -8,8 +8,8 @@ Error.stackTraceLimit = Infinity;
 require('zone.js/dist/long-stack-trace-zone');
 
 export const environment: Environment = {
+  apiUrl: 'http://localhost:8000',
   production: false,
-
   showDevModule: true,
 
   /** Angular debug tools in the dev console

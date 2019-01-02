@@ -1,24 +1,30 @@
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/components/login/login.component';
+
+import { LoginComponent } from './auth/components';
+import { AuthGuard } from './auth/guards';
+import { LayoutComponent } from './layout';
+
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: LayoutComponent,
+    canActivate: [ AuthGuard ],
   },
   {
     path: 'login',
-    component: LoginComponent
-  }
+    component: LoginComponent,
+  },
 ];
 
 
-export const routingComponents = [
-  AppComponent
-];
-
-export const routing = RouterModule.forRoot(
-  routes,
-  { preloadingStrategy: PreloadAllModules },
-);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
+  exports: [RouterModule],
+})
+export class AppRouting {}

@@ -2,38 +2,34 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AuthModule } from './auth';
-import { ApolloGqlModule } from './apollo-gql';
-import { SharedModule } from './shared/shared.module';
-
 import { AppComponent } from './app.component';
+import { AppRouting } from './app.routing';
 
-// Router
-import { routing, routingComponents } from './app.routing';
+import { AuthModule } from './auth';
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
+import { LayoutModule } from './layout';
 
 import '../styles/vendor.scss';
 
 
 @NgModule({
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent,
+  ],
   imports: [
-    // Modules
     BrowserModule,
-    SharedModule,
-    ApolloGqlModule,
-    AuthModule,
     HttpClientModule,
 
-    // Routes
-    routing,
+    SharedModule,
+    CoreModule,
+    AuthModule,
+    LayoutModule,
+
+    AppRouting,
   ],
   declarations: [
     AppComponent,
-
-    // Router components
-    routingComponents,
   ],
 })
-
-export class AppModule {
-}
+export class AppModule {}

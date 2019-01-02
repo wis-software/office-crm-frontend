@@ -1,20 +1,28 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './components/login';
-import { SharedModule } from '../shared/shared.module';
+
+import { SharedModule } from '../shared';
+import { AuthGuard } from './guards';
+import { LoginComponent } from './components';
+import { AuthInterceptor } from './interceptors';
 import { AuthService } from './services';
+
 
 @NgModule({
   imports: [
     SharedModule,
   ],
-
   declarations: [
     LoginComponent,
   ],
-
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ]
 })
-export class AuthModule {
-}
+export class AuthModule {}
