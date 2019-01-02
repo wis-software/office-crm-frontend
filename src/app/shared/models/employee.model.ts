@@ -1,18 +1,22 @@
-import { Model, Alias } from 'tsmodels';
+import { Expose, plainToClassFromExist } from 'class-transformer';
 
 
-export class EmployeeModel extends Model {
+export class EmployeeModel {
 
-  @Alias() public id: number;
-  @Alias() public username: string;
+  @Expose()
+  public id: number;
 
-  @Alias() public firstName: string;
-  @Alias() public lastName: string;
+  @Expose()
+  public username: string;
+
+  @Expose()
+  public firstName: string;
+
+  @Expose()
+  public lastName: string;
 
   constructor(data: any = {}) {
-    super();
-
-    this._fromJSON(data);
+    plainToClassFromExist(this, data);
   }
 
   get fullName() {
