@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { map, tap } from 'rxjs/operators';
+import { Expose } from 'class-transformer';
+import { Apollo } from 'apollo-angular';
 import { ApolloQueryResult } from 'apollo-client';
 import gql from 'graphql-tag';
-import { Alias } from 'tsmodels';
 
 import { EmployeeModel } from '../../shared/models';
-import { Apollo } from 'apollo-angular';
 import { AuthService } from '../../auth/services';
 
 
@@ -14,7 +14,9 @@ import { AuthService } from '../../auth/services';
 export class CurrentUserService extends EmployeeModel {
 
   public loaded = false;
-  @Alias('exp') public expired: string;
+
+  @Expose({ name: 'exp' })
+  public expired: string;
 
   constructor(
     private _authService: AuthService,
