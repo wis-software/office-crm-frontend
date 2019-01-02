@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 
-import { _throw as throwError } from 'rxjs/observable/throw';
+import { throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../../environments';

@@ -1,32 +1,37 @@
 import { NgModule } from '@angular/core';
 
-import { Apollo, ApolloModule } from 'apollo-angular';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 @NgModule({
+  imports: [
+    ApolloModule,
+  ],
+  providers: [{
+    provide: APOLLO_OPTIONS,
+    useFactory(httpLink: HttpLink) {
+      const cache = new InMemoryCache({ addTypename: false });
+      const link = httpLink.create({ uri: '/graphql/' });
+
+      return {
+        link,
+        cache,
+        defaultOptions: {
+          query: {
+            fetchPolicy: 'network-only',
+            errorPolicy: 'all',
+          },
+        },
+      };
+    },
+    deps: [ HttpLink ]
+  }],
   exports: [
     ApolloModule,
     HttpLinkModule,
   ],
 })
 export class ApolloGqlModule {
-
-  constructor(apollo: Apollo, httpLink: HttpLink) {
-    const cache = new InMemoryCache({ addTypename: false });
-    const link = httpLink.create({ uri: '/graphql/' });
-
-    apollo.create({
-      link,
-      cache,
-      defaultOptions: {
-        query: {
-          fetchPolicy: 'network-only',
-          errorPolicy: 'all',
-        },
-      },
-    });
-  }
-
 }

@@ -79,10 +79,15 @@ export class AuthService {
    * Clear all cookies
    */
   public logout() {
+    const client = this._apollo.getClient();
     this._token = void 0;
+
     localStorage.removeItem(TOKEN_PREFIX);
 
-    this._apollo.getClient().resetStore();
+    if (client) {
+      client.resetStore();
+    }
+
     this._router.navigate(['login']);
   }
 

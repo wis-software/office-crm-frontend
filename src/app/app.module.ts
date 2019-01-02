@@ -10,8 +10,6 @@ import { CoreModule } from './core';
 import { SharedModule } from './shared';
 import { LayoutModule } from './layout';
 
-import '../styles/vendor.scss';
-
 
 @NgModule({
   bootstrap: [
