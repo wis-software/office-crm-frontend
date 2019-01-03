@@ -6,12 +6,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 @NgModule({
-  imports: [
-    ApolloModule,
-  ],
   providers: [{
     provide: APOLLO_OPTIONS,
-    useFactory(httpLink: HttpLink) {
+    useFactory: (httpLink: HttpLink) => {
       const cache = new InMemoryCache({ addTypename: false });
       const link = httpLink.create({ uri: '/graphql/' });
 
